@@ -595,4 +595,9 @@ describe('hasFilterQuery', () => {
 		expect(hasFilterQuery('done = false')).toBe(true)
 		expect(hasFilterQuery('hello')).toBe(false)
 	})
+
+	it('does not treat a plain search that contains an operator word as a filter', () => {
+		expect(hasFilterQuery('meeting')).toBe(false)
+		expect(hasFilterQuery('sing along')).toBe(false)
+	})
 })

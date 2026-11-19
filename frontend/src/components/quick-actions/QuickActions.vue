@@ -256,6 +256,11 @@ function closeQuickActions() {
 }
 
 const foundProjects = computed(() => {
+	// With a command selected (e.g. "New task") the typed text is the command's input, not a project search.
+	if (selectedCmd.value !== null) {
+		return []
+	}
+
 	const {project, text, labels, assignees} = parsedQuery.value
 
 	if (project !== null) {
